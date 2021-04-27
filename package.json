@@ -1,7 +1,7 @@
 {
   "name": "bvro",
   "version": "1.0.0",
-  "description": "",
+  "description": "API para sincronizacion de Open Bravo sobre Prestashop",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -52,15 +52,37 @@ app.get('/products/:id', (req, res)=>{
 });
 
 app.post('/add', (req, res)=>{
-    res.send('New product');
+    const  sql = 'INSERT INTO  ps_product SET ?';
+
+    const productObj = {
+        id_supplier: req.body.id_supplier
+    };
+
+    connection.query(sql, productObj, error => {
+        if (error) throw  error;
+        res.send('Product added')
+    });
 });
 
 app.put('/update/:id', (req, res)=>{
-    res.send('Update product');
+    const {id} = req.params;
+    const {id_supplier} =req.body;
+    const sql =`UPDATE ps_product SET id_supplier = '${id_supplier}' WHERE id =${id}`;
+
+    connection.query(sql, error => {
+        if (error) throw  error;
+        res.send('Product updated')
+    });
 });
 
 app.delete('/delete/:id',(req,res)=>{
-    res.send('Delete Product')
+    const  {id} = req.params;
+    const sql = `DELETE FROM ps_product WHERE id= id ${id}`;
+
+    connection.query(sql, error =>{
+        if (error) throw  error;
+        res.send('Product deleted')
+    });
 });
 
 //Check connect
