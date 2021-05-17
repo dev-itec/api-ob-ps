@@ -1,13 +1,11 @@
-const express = require('express');
-const mysql = require('mysql');
+const express = require('express'), mysql = require('mysql'), helmet = require('helmet'),
+    bodyParser = require('body-Parser'), PORT = process.env.PORT || 3010, app = express();
 
-const bodyParser = require('body-Parser');
-
-const  PORT = process.env.PORT || 3010;
-
-const  app = express();
 
 app.use(bodyParser.json());
+
+//Helmet
+app.use(helmet());
 
 //Mysql
 const connection = mysql.createConnection({
